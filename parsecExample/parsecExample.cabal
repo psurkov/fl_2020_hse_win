@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 32663cd95d54677a0c29f2f7cc847ace6c6cfcd5a7d3075f2428a0c8c92185d8
+-- hash: 6282c62dace0b879c08651b2ab227b7c8bf5fa3a47856a371849c012c9c506e0
 
 name:           parsecExample
 version:        0.1.0.0
@@ -33,8 +33,14 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      HUnit
+    , base >=4.7 && <5
+    , hedgehog
     , parsec
+    , tasty
+    , tasty-discover
+    , tasty-hedgehog
+    , tasty-hunit
   default-language: Haskell2010
 
 executable parsecExample-exe
@@ -45,21 +51,34 @@ executable parsecExample-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      HUnit
+    , base >=4.7 && <5
+    , hedgehog
     , parsec
     , parsecExample
+    , tasty
+    , tasty-discover
+    , tasty-hedgehog
+    , tasty-hunit
   default-language: Haskell2010
 
 test-suite parsecExample-test
   type: exitcode-stdio-1.0
-  main-is: Spec.hs
+  main-is: Test.hs
   other-modules:
+      Test.Parser
       Paths_parsecExample
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      HUnit
+    , base >=4.7 && <5
+    , hedgehog
     , parsec
     , parsecExample
+    , tasty
+    , tasty-discover
+    , tasty-hedgehog
+    , tasty-hunit
   default-language: Haskell2010

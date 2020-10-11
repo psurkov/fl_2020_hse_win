@@ -11,7 +11,7 @@ data Expr = Num Int
 
 parseString :: String -> Either ParseError Expr
 parseString =
-  parse exprParser ""
+  parse (do r <- exprParser; eof; return r) ""
 
 -- cell =
 --   letter `seq` \x ->
